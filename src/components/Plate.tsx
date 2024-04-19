@@ -15,7 +15,11 @@ const Plate: React.FC<Props> = ({ value, x, y }) => {
   },[]);
 
   return (
-    <div className={`plate plate-${value} ${showPlate && 'show'}`} style={{ gridRow: y + 1, gridColumn: x + 1 }}>
+    <div className={`plate plate-${value} ${showPlate && 'show'}`} 
+    style={{ 
+      gridRow: y + 1, gridColumn: x + 1 
+      
+      }}>
       <h4>{value !== 0 && value}</h4>
     </div>
   );

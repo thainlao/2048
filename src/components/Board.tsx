@@ -10,6 +10,7 @@ const Board = () => {
     const [board, setBoard] = useState<number[][]>(initialBoard);
     const [score, setScore] = useState<number>(0);
 
+
     const getRandomInt = (min: number, max: number) => {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     };
@@ -17,35 +18,38 @@ const Board = () => {
     const handleDown = () => {
         const newBoard = [...board];
         let scoreChange = 0;
-    
+
         // Перемещаем клетки вниз и сливаем их при необходимости
         for (let x = 0; x < newBoard[0].length; x++) {
             let stack = [];
-            for (let y = newBoard.length - 1; y >= 0; y--) {
+            for (let y = 0; y < newBoard.length; y++) {
                 if (newBoard[y][x] !== 0) {
-                    if (stack.length > 0 && stack[stack.length - 1] === newBoard[y][x]) {
+                    if (stack.length > 0 && stack[stack.length - 1].value === newBoard[y][x]) {
                         // Если текущая плитка равна последней в стеке, объединяем их
-                        stack[stack.length - 1] *= 2;
-                        scoreChange += stack[stack.length - 1];
+                        const mergedValue = newBoard[y][x] * 2;
+                        stack[stack.length - 1] = { value: mergedValue };
+                        scoreChange += mergedValue;
                     } else {
-                        stack.push(newBoard[y][x]);
+                        stack.push({ value: newBoard[y][x] });
                     }
-                    newBoard[y][x] = 0;
                 }
             }
     
+            // Возвращаем объединенные клетки обратно на доску
             let stackIndex = stack.length - 1;
             for (let y = newBoard.length - 1; y >= 0; y--) {
                 if (stackIndex >= 0) {
-                    newBoard[y][x] = stack[stackIndex];
+                    newBoard[y][x] = stack[stackIndex].value;
                     stackIndex--;
+                } else {
+                    newBoard[y][x] = 0;
                 }
             }
         }
-    
+        
         // Обновляем счет
         setScore(prevScore => prevScore + scoreChange);
-    
+        
         // Генерируем новую плитку
         const emptyPositions = [];
         for (let y = 0; y < newBoard.length; y++) {
@@ -59,10 +63,11 @@ const Board = () => {
             const { x, y } = emptyPositions[Math.floor(Math.random() * emptyPositions.length)];
             newBoard[y][x] = 2;
         }
-    
+        
         // Обновляем состояние доски
         setBoard(newBoard);
     };
+    
     
     const handleLeft = () => {
         const newBoard = [...board];
@@ -258,9 +263,40 @@ const Board = () => {
         calculateScore()
     },[handleDown, handleLeft, handleUp, handleStartGame])
 
+
+    useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+        switch (event.key) {
+            case 'ArrowDown':
+                handleDown();
+                break;
+            case 'ArrowUp':
+                handleUp();
+                break;
+            case 'ArrowLeft':
+                handleLeft();
+                break;
+            case 'ArrowRight':
+                handleRight();
+                break;
+            default:
+                break;
+        }
+    };
+
+        document.addEventListener('keydown', handleKeyDown);
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [handleStartGame]);
+
     return (
         <div className='board'>
-            <h2 className='score'>Score Count: {score}</h2>
+            <section className='board_section'>
+                <p>2048</p>
+                <h5>Join the tiles, get to 2048!</h5>
+            </section>
+            <h2 style={{color: '#8f7a65'}} className='score'>Общий счет: {score}</h2>
             <div className='board-grid'>
                 {board.map((row, rowIndex) => (
                     <div key={rowIndex} className='board-row'>
@@ -271,10 +307,7 @@ const Board = () => {
                 ))}
             </div>
             <div className='buttons_section'>
-                <button onClick={handleDown}>DOWN</button>
-                <button onClick={handleUp}>UP</button>
-                <button onClick={handleLeft}>LEFT</button>
-                <button onClick={handleRight}>RIGHT</button>
+                <h4 style={{fontSize: '1.5rem', color:'#8f7a65'}}>Используйте стрелки для управления</h4>
             </div>
             <button onClick={handleStartGame} className='start_game'>Начать игру</button>
         </div>

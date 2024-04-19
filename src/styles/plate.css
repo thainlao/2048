@@ -1,117 +1,86 @@
 .plate {
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 120px;
   border-radius: 5px;
   margin: 5px;
   font-size: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ffffff;
-  border: 4px solid #ffffff;
+  background-color: #ccc1b2;
   transition: all 0.4s ease-in-out;
-  transform: translateY(-100%);
+  transform: translate(-100%);
 }
 
 .plate.show {
-  transform: translateY(0);
   opacity: 1;
+  transform: translate(0);
 }
 
 .plate-2 {
-  background-color: #ffcc80;
-  color: #000000;
-  border: 4px solid #b38f5a;
+  background-color: #eee3da;
+  color: #776e65;
   animation: plateScale 0.5s ease-in;
-  animation-fill-mode: both; 
 }
 
 .plate-4 {
-  background-color: #4fbfdb;
-  color: #000000;
-  border: 4px solid #4fbfdb;
+  background-color: #eee1c9;
+  color: #776e65;
   animation: plateScale 0.5s ease-in;
-  animation-fill-mode: both; 
 }
 
 .plate-8 {
-  background-color: #70db4f;
-  color: #000000;
-  border: 4px solid #70db4f;
+  background-color: #f4b278;
+  color: white;
   animation: plateScale 0.5s ease-in;
-  animation-fill-mode: both; 
 }
 
 .plate-16 {
-  background-color: #2e598b;
-  color: #000000;
-  border: 4px solid #2e598b;
+  background-color: #f89665;
+  color: #ffffff;
   animation: plateScale 0.5s ease-in;
-  animation-fill-mode: both; 
 }
 
 .plate-32 {
-  background-color: #f6fa0d;
-  color: #000000;
-  border: 4px solid #f6fa0d;
+  background-color: #f77e5f;
+  color: white;
   animation: plateScale 0.5s ease-in;
-  animation-fill-mode: both; 
 }
 
 .plate-64 {
-  background-color: #fa580d;
-  color: #c7b1b1;
-  border: 4px solid #fa580d;
+  background-color: #f75f3c;
+  color: white;
   animation: plateScale 0.5s ease-in;
-  animation-fill-mode: both; 
 }
 
 .plate-128 {
-  background-color: #f6fa0d;
-  color: #000000;
-  border: 4px solid #f6fa0d;
+  background-color: #edd073;
+  color: white;
   animation: plateScale 0.5s ease-in;
-  animation-fill-mode: both; 
-}
-
-.plate-128 {
-  background-color: #fa0d97;
-  color: #000000;
-  border: 4px solid #fa0d97;
-  animation: plateScale 0.5s ease-in;
-  animation-fill-mode: both; 
 }
 
 .plate-256 {
-  background-color: #1e4919;
-  color: #000000;
-  border: 4px solid #1e4919;
+  background-color: #d0b663;
+  color: white;
   animation: plateScale 0.5s ease-in;
-  animation-fill-mode: both; 
 }
 
 .plate-512 {
-  background-color: #1517a3;
-  color: #000000;
-  border: 4px solid #1517a3;
+  background-color: #aed063;
+  color: white;
   animation: plateScale 0.5s ease-in;
-  animation-fill-mode: both; 
 }
 
 .plate-1024 {
   background-color: #5f4113;
   color: #000000;
-  border: 4px solid #5f4113;
   animation: plateScale 0.5s ease-in;
-  animation-fill-mode: both; 
 }
 
 .plate-2048 {
   background-color: #bd3737;
   color: #000000;
-  border: 4px solid #bd3737;
   animation: plateScale 0.5s ease-in;
-  animation-fill-mode: both; 
 }
 
 @keyframes plateScale {
@@ -119,7 +88,7 @@
     transform: scale(0.6);
   }
   50% {
-    transform: scale(1.2); 
+    transform: scale(1.2);
   }
   100% {
     transform: scale(1);
