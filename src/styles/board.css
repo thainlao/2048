@@ -78,3 +78,19 @@
 .board_section h5{
   font-size: 1rem;
 }
+
+.github_section{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.github_section a {
+  color: #8f7a65;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-left: 1rem;
+}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import '../styles/board.css';
 import Plate from './Plate';
+import gh from '../assets/github.png';
 
 const initialBoard: number[][] = Array.from({ length: 4 }, () =>
     Array.from({ length: 4 }, () => 0)
@@ -310,6 +311,13 @@ const Board = () => {
                 <h4 style={{fontSize: '1.5rem', color:'#8f7a65'}}>Используйте стрелки для управления</h4>
             </div>
             <button onClick={handleStartGame} className='start_game'>Начать игру</button>
+
+            <div className='github_section'>
+                <a href='https://github.com/thainlao/2048'>
+                    <img src={gh} alt='github'/>
+                    Исходный код
+                </a>
+            </div>
         </div>
     )
 }
