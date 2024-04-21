@@ -310,6 +310,7 @@ const Board = () => {
             <div className='buttons_section'>
                 <h4 style={{fontSize: '1.5rem', color:'#8f7a65'}}>Используйте стрелки для управления</h4>
             </div>
+            <div className='last_section'>
             <button onClick={handleStartGame} className='start_game'>Начать игру</button>
 
             <div className='github_section'>
@@ -317,6 +318,7 @@ const Board = () => {
                     <img src={gh} alt='github'/>
                     Исходный код
                 </a>
+            </div>
             </div>
         </div>
     )

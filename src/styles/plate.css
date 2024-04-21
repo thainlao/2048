@@ -1,6 +1,6 @@
 .plate {
-  width: 120px;
-  height: 120px;
+  width: 95px;
+  height: 95px;
   border-radius: 5px;
   margin: 5px;
   font-size: 24px;
@@ -10,6 +10,13 @@
   background-color: #ccc1b2;
   transition: all 0.4s ease-in-out;
   transform: translate(-100%);
+}
+
+@media (max-width: 576px) {
+  .plate{
+    width: 75px;
+    height: 75px;
+  }
 }
 
 .plate.show {
